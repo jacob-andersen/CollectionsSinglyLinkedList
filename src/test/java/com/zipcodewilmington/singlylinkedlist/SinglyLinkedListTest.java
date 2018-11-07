@@ -13,9 +13,9 @@ public class SinglyLinkedListTest {
     public void addTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apples");
-        list.addToStart("oranges");
-        list.addToStart("bananas");
+        list.addToStart(1);
+        list.addToStart(2);
+        list.addToStart(3);
         int expected = 3;
         int actual = list.size();
 
@@ -26,7 +26,7 @@ public class SinglyLinkedListTest {
     public void sizeTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apples");
+        list.addToStart(1);
         int expected = 1;
         int actual = list.size();
 
@@ -37,9 +37,9 @@ public class SinglyLinkedListTest {
     public void getTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apples");
-        String expected = "Apples";
-        String actual = list.get(1);
+        list.addToStart(1);
+        int expected = 1;
+        int actual = list.get(1);
 
         Assert.assertEquals(expected,actual);
 
@@ -48,9 +48,9 @@ public class SinglyLinkedListTest {
     public void containsTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apples");
+        list.addToStart(1);
         boolean expected = true;
-        boolean actual = list.contains("Apples");
+        boolean actual = list.contains(1);
 
         Assert.assertEquals(expected,actual);
 
@@ -60,9 +60,9 @@ public class SinglyLinkedListTest {
     public void findIndexTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apples");
+        list.addToStart(1);
         int expected = 1;
-        int actual = list.findIndex("Apples");
+        int actual = list.findIndex(1);
 
         Assert.assertEquals(expected,actual);
 
@@ -72,9 +72,9 @@ public class SinglyLinkedListTest {
     public void copyTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apple");
-        list.addToStart("Microsoft");
-        list.addToStart("Google");
+        list.addToStart(1);
+        list.addToStart(2);
+        list.addToStart(3);
         SinglyLinkedList copylist = list.copyList();
         Assert.assertTrue(!list.equals(copylist));
     }
@@ -83,13 +83,29 @@ public class SinglyLinkedListTest {
     public void removeTest()
     {
         SinglyLinkedList list = new SinglyLinkedList();
-        list.addToStart("Apple");
-        list.addToStart("Microsoft");
-        list.addToStart("Google");
+        list.addToStart(1);
+        list.addToStart(2);
+        list.addToStart(3);
         list.remove(2);
         int expected=2;
         int actual = list.size();
         Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void sortTest()
+    {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.addToStart(5);
+        list.addToStart(4);
+        list.addToStart(2);
+        list.addToStart(1);
+        list.addToStart(3);
+        list.Sort();
+        int expected = 3;
+        int actual = list.findIndex(3);
+        Assert.assertEquals(expected,actual);
+
     }
 
 

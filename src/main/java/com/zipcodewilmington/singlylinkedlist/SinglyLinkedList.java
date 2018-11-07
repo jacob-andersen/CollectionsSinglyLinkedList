@@ -7,16 +7,16 @@ public class SinglyLinkedList {
 
     private class Node
     {
-        private String item;
+        private int item;
         private Node link;
 
         public Node()
         {
             link = null;
-            item = null;
+            item = 0;
         }
 
-        public Node (String newItem, Node linkValue)
+        public Node (int newItem, Node linkValue)
         {
             item = newItem;
             link = linkValue;
@@ -30,9 +30,9 @@ public class SinglyLinkedList {
         head = null;
     }
 
-    public void addToStart(String itemName)
+    public void addToStart(int item)
     {
-        head = new Node(itemName, head);
+        head = new Node(item, head);
     }
 
     public int size()
@@ -47,30 +47,30 @@ public class SinglyLinkedList {
         return count;
     }
 
-    public boolean contains(String item)
+    public boolean contains(int item)
     {
         return(find(item) != null);
 
     }
 
-    private Node find(String target)
+    private Node find(int target)
     {
         Node position = head;
-        String itemAtPosition;
+        int itemAtPosition;
         while (position != null)
         {
         itemAtPosition = position.item;
-        if (itemAtPosition.equals(target))
+        if (itemAtPosition==(target))
             return position;
         position = position.link;
         }
         return null;
         }
 
-        public String get(int index)
+        public int get(int index)
         {
             Node position = head;
-            String itemAtPosition;
+            int itemAtPosition;
             int i=0;
             while (position != null)
             {
@@ -80,7 +80,7 @@ public class SinglyLinkedList {
                 return itemAtPosition;
             position=position.link;
             }
-            return null;
+            return -1;
         }
 
         public void remove (int index) {
@@ -99,16 +99,16 @@ public class SinglyLinkedList {
             position.link = position.link.link;
         }
 
-        public int findIndex(String target){
+        public int findIndex(int target){
 
             Node position = head;
-            String itemAtPosition;
+            int itemAtPosition;
             int i=0;
             while (position != null)
             {
                 i++;
                 itemAtPosition = position.item;
-                if (itemAtPosition.equals(target))
+                if (itemAtPosition==(target))
                     return i;
                 position = position.link;
             }
@@ -128,4 +128,25 @@ public class SinglyLinkedList {
             }
             return copy;
         }
+
+        public void Sort()
+        {
+            boolean sorted = false;
+            Node position = head;
+            int temp = 0;
+
+            while (position!=null && sorted != true) {
+                sorted=true;
+                for(int i = 0;i<size();i++)
+                if (position.item > position.link.item)
+                {
+                    temp = position.link.item;
+                    position.link.item=position.item;
+                    position.item=temp;
+                    sorted=false;
+                }
+                position=position.link;
+        }
+        }
+
 }
